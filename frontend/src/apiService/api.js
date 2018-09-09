@@ -5,10 +5,10 @@ const headers = {
     'Authorization': 'token'
 }
 // Categoty
-export const getListCategories = () =>
+export const getListCategories = (callback) =>
     fetch(`${url}/categories`, { headers })
         .then(res => res.json())
-        .then(data => data.categories);
+        .then(data => callback(data.categories));
 
 // Post
 export const getListPosts = (callback) =>
@@ -20,9 +20,10 @@ export const getPostDetail = (Id) =>
     fetch(`${url}/posts/${Id}`, { headers })
         .then(res => res.json())
 
-export const getPostsByCategory = (category) =>
+export const getPostsByCategory = (category, callback) =>
     fetch(`${url}/${category}/posts`, { headers })
-        .then(res => res.json());
+        .then(res => res.json())
+        .then(posts => {callback(posts)});
 
 export const savePost = (post) =>
     fetch(`${url}/posts`, {

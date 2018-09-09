@@ -1,30 +1,47 @@
 import React, { Component } from 'react';
-
+import {Row, Col} from 'reactstrap';
+import moment from 'moment';
+import './style.css';
+import {Link} from 'react-router-dom';
+import DropdownEdit from "../DropdownEdit/DropdownEdit";
 const ListPosts = props =>(
+    <div className='container-fluid'>
+        {props.posts.map(p => (
+       <Row className='post'>
 
-       props.posts.map(p => (
-           <div>
-
-        <div>
-            body: {p.body}
-        </div>
-        <div>
-            category: {p.category}
-        </div>
-        <div>
-            commentCount: {p.commentCount}
-        </div>
-        <div>
-            deleted: {p.deleted}
-        </div>
-        <div>
-            id: {p.id}
-        </div>
-        <div>
-            title: {p.title}
-        </div>
-           </div>
-    ))
-        )
+           {console.log("props",p)}
+           <Col className='col-1'>
+               <Row>
+                   <div className='divVote'>
+                       <div className='voteScore'>{p.voteScore}</div>
+                       <div className='voteLabel'>vote</div>
+                   </div>
+               </Row>
+           </Col>
+           <Col className='col-10'>
+               <Row>
+                   <Link to={`/${p.category}/${p.id}`}>
+                   <h5 className='title'>{p.title}</h5>
+                   </Link>
+               </Row>
+               <Row className='criteriaPost'>
+                   <Col className='col-3'>Date: <b>{moment(p.timestamp).format('LLL')}</b></Col>
+                   <Col className='col-2'>Author: <b>{p.author}</b></Col>
+                   <Col  className='col-2'>Category: <b>{p.category}</b></Col>
+                   <Col  className='col-2'>Nb comment: <b>{p.commentCount}</b></Col>
+               </Row>
+               <Row>
+                   <div>
+                       {p.body}
+                   </div>
+               </Row>
+           </Col>
+           <Col className='col-1'>
+               <DropdownEdit/>
+           </Col>
+          </Row>
+        ))}
+    </div>
+    )
 
 export default ListPosts
