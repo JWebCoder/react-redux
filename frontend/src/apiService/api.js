@@ -16,9 +16,10 @@ export const getListPosts = (callback) =>
         .then(res => res.json())
         .then(posts => {callback(posts)});
 
-export const getPostDetail = (Id) =>
+export const getPostDetail = (Id, callback) =>
     fetch(`${url}/posts/${Id}`, { headers })
         .then(res => res.json())
+        .then(data => callback(data))
 
 export const getPostsByCategory = (category, callback) =>
     fetch(`${url}/${category}/posts`, { headers })
@@ -51,24 +52,21 @@ export const deletePost = (post_id) =>
         headers
     }).then(res => res.json());
 
-export const votePost = (post_id, voteOption) =>
+export const votePost = (post_id, option) =>
     fetch(`${url}/posts/${post_id}`, {
         method: 'POST',
         headers: {
             ...headers,
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(voteOption)
+        body: JSON.stringify({option})
     }).then(res => res.json());
 
 // Comment
-export const getAllCommentsOfPost = (post_id) =>
+export const getAllCommentsOfPost = (post_id,callback) =>
     fetch(`${url}/posts/${post_id}/comments`, { headers })
-        .then(res => res.json());
-
-export const getCommentDetail = (comment_id) =>
-    fetch(`${url}/comments/${comment_id}`, { headers })
-        .then(res => res.json());
+        .then(res => res.json())
+        .then(data => callback(data));
 
 export const saveComment = (comment) =>
     fetch(`${url}/comments`, {
@@ -96,12 +94,12 @@ export const deleteComment = (comment_id) =>
         headers
     }).then(res => res.json());
 
-export const voteComment = (comment_id, typeVote) =>
+export const voteComment = (comment_id, option) =>
     fetch(`${url}/comments/${comment_id}`, {
         method: 'POST',
         headers: {
             ...headers,
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(typeVote)
+        body: JSON.stringify({option})
     }).then(res => res.json());

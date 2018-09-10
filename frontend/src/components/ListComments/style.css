@@ -1,0 +1,13 @@
+.authorCommment{
+    font-size: 13px;
+}
+.criterialCommment{
+    font-size: 12px;
+}
+.comment{
+    padding-bottom: 18px;
+}
+.itemEvent{
+    cursor: pointer;
+    padding-right: 10px;
+}

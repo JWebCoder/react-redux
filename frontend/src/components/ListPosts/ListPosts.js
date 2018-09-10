@@ -8,8 +8,6 @@ const ListPosts = props =>(
     <div className='container-fluid'>
         {props.posts.map(p => (
        <Row className='post'>
-
-           {console.log("props",p)}
            <Col className='col-1'>
                <Row>
                    <div className='divVote'>
@@ -37,7 +35,7 @@ const ListPosts = props =>(
                </Row>
            </Col>
            <Col className='col-1'>
-               <DropdownEdit/>
+               <DropdownEdit {...p}/>
            </Col>
           </Row>
         ))}
