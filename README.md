@@ -12,7 +12,7 @@ This repository includes the code for the backend API Server that you'll use to 
   - `npm install`
   - `node server`
 
-- Error handling wasn´t not taken in consideration yet
+- Error handling wasn´t not taken in consideration yet. Layout the same ..
 
 - In another terminal window
   
