@@ -1,0 +1,2 @@
+export const SET_TAB_SORT = "SET_TAB_SORT"
+export const UPDATE_TAB_SORT = "UPDATE_TAB_SORT"
