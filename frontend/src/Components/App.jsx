@@ -6,18 +6,17 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import LandingPage from "./Pages/LandingPage";
 import NavBarTop from "./NavBarTop";
+import CreatePost from "./CreatePost"
 
 function App() {
   return (
     <Router>
       <NavBarTop/>
+      <CreatePost/>
+      <hr className="container"></hr>
       <Switch>
         <Route path="/" exact component={LandingPage} />
-        {/* <Route path="/edit-post/:postId" component={EditPostPageContainer} />
-        <Route path="/new-post" component={NewPostPageContainer} />
-        <Route path="/:categoryPath/:postId" component={PostPageContainer} />
-        <Route path="/:categoryPath" component={CategoryPageContainer} />
-        <Route component={RouteNotFound} /> */}
+       
       </Switch>
     </Router>
   );

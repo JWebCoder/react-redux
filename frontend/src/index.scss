@@ -1,4 +1,38 @@
 
+@font-face {
+  font-family: 'Letter Gothic';
+  src: url('/fonts/letter_gothic-webfont.woff2') format('woff2'),
+    url('/fonts/letter_gothic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: 'Letter Gothic';
+  font-size: 0.95rem;
+
+}
 
 
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
+
+textarea.form-control {
+  font-size: 14px;
+}
+
+input.form-control {
+  box-shadow: 8px 8px rgba(217, 214, 208, 0.9);
+}
+
+textarea.form-control {
+  box-shadow: 8px 8px rgba(217, 214, 208, 0.9);
+}
+
+select.form-control {
+  box-shadow: 8px 8px rgba(217, 214, 208, 0.9);
+}
+.nav {
+  color:bisque;
+  box-shadow: 5px 10px ;
+  opacity: 0.7;
+}
