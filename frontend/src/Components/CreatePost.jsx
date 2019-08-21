@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Redirect } from "react-router";
 
 import axios from "axios";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Button, Form, FormGroup, Input, } from "reactstrap";
 
 export default function CreatePost() {
   const [formState, setForm] = useState({
@@ -73,7 +72,7 @@ export default function CreatePost() {
   }
 
   return (
-    <div style={{backgroundImage: "linear-gradient(90deg, black, black)", opacity:"0.55",marginTop:"-10px", marginBottom:"-15px"}}>
+    <div style={{backgroundImage: "linear-gradient(90deg, black, black)", opacity:"0.40",marginTop:"-10px", marginBottom:"-15px"}}>
     <div className="container" >
       {/* <pre>{JSON.stringify(formState, null, 2)}</pre>
       <pre>{JSON.stringify(fetchState, null, 2)}</pre> */}
