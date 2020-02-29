@@ -1,0 +1,18 @@
+.textinput {
+  width: 100%;
+  height: 32px;
+  font-size: 13px;
+}
+
+.textinput input {
+  width: 100%;
+  height: 32px;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  background-color: white;
+}
+
+.textinput input::placeholder {
+  color: #999999;
+  margin-right: 10px;
+}

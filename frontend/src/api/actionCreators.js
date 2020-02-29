@@ -177,18 +177,18 @@ const getPosts = () =>
  * Post one new post
  * @param {string} id - Post id
  * @param {string} title - Post title
- * @param {string} body - Post body
+ * @param {string} postBody - Post body
  * @param {string} author - Post author
  * @param {string} category - Post category
  */
-const postPost = (id, title, body, author, category) =>
+const postPost = (id, title, postBody, author, category) =>
   factory(
     POST_POST_LOADING,
     POST_POST_SUCCESS,
     POST_POST_ERROR,
     FULL_POSTS_RESOURCE_PATH,
     "POST",
-    { body: id, title, body, author, category, timestamp: Date.now() }
+    { body: id, title, postBody, author, category, timestamp: Date.now() }
   );
 
 /**

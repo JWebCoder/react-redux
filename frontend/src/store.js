@@ -1,9 +1,10 @@
 import { applyMiddleware, createStore, combineReducers, compose } from "redux";
 import thunk from "redux-thunk";
 
+import categoryListReducer from "./containers/CategoriesList/reducer";
 import { reducer as apiReducer } from "./api";
 
-const reducers = combineReducers({ apiReducer });
+const reducers = combineReducers({ apiReducer, categoryListReducer });
 
 const store = createStore(
   reducers,

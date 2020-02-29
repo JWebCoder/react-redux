@@ -1,0 +1,35 @@
+.list {
+  height: 100%;
+}
+
+.listHorizontal {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-shrink: 1;
+}
+
+.list:hover {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.listHorizontal:hover {
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+.itemClickable {
+  cursor: pointer;
+}
+
+.verticalMargin-1 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.horizontalMargin-1 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}

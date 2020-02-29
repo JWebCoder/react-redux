@@ -1,12 +1,13 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { actionCreators } from "../../api";
 
-const FeedsPage = () => {
-  const dispatch = useDispatch();
-  dispatch(actionCreators.getCategories());
-  dispatch(actionCreators.getCategoryPosts("react"));
-  return <p>Olá</p>;
-};
+import CategoriesList from "../CategoriesList";
+import AuthorModal from "../AuthorModal";
+
+const FeedsPage = () => (
+  <React.Fragment>
+    <AuthorModal />
+    <CategoriesList />
+  </React.Fragment>
+);
 
 export default FeedsPage;
