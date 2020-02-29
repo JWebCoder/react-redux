@@ -1,10 +1,19 @@
-import { applyMiddleware, createStore, combineReducers } from "redux";
-import thunkMiddleware from "redux-thunk";
+import { applyMiddleware, createStore, combineReducers, compose } from "redux";
+import thunk from "redux-thunk";
 
-const reducers = combineReducers(() => {});
+import { reducer as apiReducer } from "./api";
 
-const middlewareEnhancer = applyMiddleware(thunkMiddleware);
+const reducers = combineReducers({ apiReducer });
 
-const store = createStore(reducers, middlewareEnhancer);
+const store = createStore(
+  reducers,
+  process.env.NODE_ENV !== "production" && window.__REDUX_DEVTOOLS_EXTENSION__
+    ? compose(
+        applyMiddleware(thunk),
+        window.__REDUX_DEVTOOLS_EXTENSION__ &&
+          window.__REDUX_DEVTOOLS_EXTENSION__()
+      )
+    : applyMiddleware(thunk)
+);
 
 export default store;
