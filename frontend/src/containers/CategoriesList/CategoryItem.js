@@ -10,8 +10,8 @@ const css = selected => {
   return cssClasses.join(" ");
 };
 
-const CategoryItem = ({ item, selected }) => (
-  <div className={css(selected)}>
+const CategoryItem = ({ item, selected, onClick }) => (
+  <div className={css(selected)} onClick={onClick}>
     <h2 className={styles.title}>{item.name}</h2>
   </div>
 );

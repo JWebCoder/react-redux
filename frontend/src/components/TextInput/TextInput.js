@@ -11,7 +11,9 @@ const TextInput = ({
   onChange,
   value,
   invisible,
-  disabled
+  disabled,
+  requiredMessage,
+  onKeyUp
 }) => {
   return (
     <div className={styles.textinput}>
@@ -22,6 +24,10 @@ const TextInput = ({
         value={value}
         placeholder={placeholder}
         hidden={invisible}
+        required={!!requiredMessage}
+        onInvalid={e => e.target.setCustomValidity(requiredMessage)}
+        onInput={e => e.target.setCustomValidity("")}
+        onKeyUp={onKeyUp}
       />
     </div>
   );

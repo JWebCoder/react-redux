@@ -1,10 +1,9 @@
 import { CHOOSE_CATEGORY } from "./actionTypes";
 
-const chooseCategory = (state, action) =>
-  console.log("AAA ") || {
-    ...state,
-    currentCategory: action.category
-  };
+const chooseCategory = (state, action) => ({
+  ...state,
+  currentCategory: action.category
+});
 
 const initialState = {
   currentCategory: null

@@ -19,7 +19,15 @@ const CategoriesList = () => {
   const categories = useSelector(state => state.apiReducer.categories);
 
   const onRow = item => (
-    <CategoryItem item={item} selected={item.name === currentCategory} />
+    <CategoryItem
+      key={item.name}
+      item={item}
+      selected={item.name === currentCategory}
+      onClick={() => {
+        dispatch(actionsCreators.chooseCategory(item.name));
+        dispatch(apiActionCreators.getCategoryPosts(item.name));
+      }}
+    />
   );
 
   return (
@@ -29,10 +37,6 @@ const CategoriesList = () => {
         datasource={categories}
         onRow={onRow}
         onBottomScroll={() => {}}
-        onItemClick={({ name }) => {
-          dispatch(actionsCreators.chooseCategory(name));
-          dispatch(apiActionCreators.getCategoryPosts(name));
-        }}
       ></List>
     </div>
   );

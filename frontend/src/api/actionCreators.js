@@ -1,3 +1,5 @@
+import * as uuid from "uuid";
+
 import {
   GET_CATEGORIES_LOADING,
   GET_CATEGORIES_SUCESS,
@@ -74,10 +76,11 @@ const loading = (type, isLoading) => ({
  * @param {string} type - The type that has error
  * @param {any} error - The error itself
  */
-const error = (type, error) => ({
-  type,
-  error
-});
+const error = (type, error) =>
+  console.log(error) || {
+    type,
+    error
+  };
 
 /**
  * Builds one action that represents success for a given type
@@ -181,15 +184,27 @@ const getPosts = () =>
  * @param {string} author - Post author
  * @param {string} category - Post category
  */
-const postPost = (id, title, postBody, author, category) =>
-  factory(
+const postPost = (title, body, author, category) => {
+  const timestamp = Date.now();
+
+  return factory(
     POST_POST_LOADING,
     POST_POST_SUCCESS,
     POST_POST_ERROR,
     FULL_POSTS_RESOURCE_PATH,
     "POST",
-    { body: id, title, postBody, author, category, timestamp: Date.now() }
+    {
+      body: {
+        id: uuid.v4(),
+        title,
+        body,
+        author,
+        category,
+        timestamp
+      }
+    }
   );
+};
 
 /**
  * Get one post
@@ -218,7 +233,7 @@ const postPostVote = (id, upvote) =>
     POST_POST_VOTE_ERROR,
     FULL_POSTS_RESOURCE_PATH + "/" + id,
     "POST",
-    { body: { option: upvote ? "upvote" : "downvote" } }
+    { body: { option: upvote ? "upVote" : "downVote" } }
   );
 
 /**

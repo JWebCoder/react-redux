@@ -1,22 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { Modal, TextInput } from "../../components";
+import { Modal, TextInput, Button } from "../../components";
 
-const AuthorModal = () => {
+import styles from "./styles.module.css";
+const AuthorModal = ({ onClose }) => {
+  const [inputAuthorVal, setInputAuthorVal] = useState("");
+
+  const handleSubmit = () => {
+    sessionStorage.setItem("author", inputAuthorVal);
+    setInputAuthorVal("");
+    onClose();
+  };
+
   if (sessionStorage.author) {
+    onClose();
     return null;
   }
   return (
-    <Modal>
-      <div>
-        <p>Autor</p>
-      </div>
-      <div>
+    <Modal allowClose={false}>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <h3>Autor</h3>
         <TextInput
           placeholder="Author"
-          onChange={value => sessionStorage.setItem("author", value)}
+          onChange={setInputAuthorVal}
+          requiredMessage="O seu nome "
         />
-      </div>
+        <Button>Aceitar </Button>
+      </form>
     </Modal>
   );
 };

@@ -10,6 +10,8 @@
   border: 1px solid #cccccc;
   border-radius: 3px;
   background-color: white;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
 }
 
 .textinput input::placeholder {

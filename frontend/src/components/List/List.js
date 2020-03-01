@@ -1,15 +1,8 @@
 import React from "react";
 
 import styles from "./styles.module.css";
-import Item from "./Item";
 
-const List = ({
-  horizontal,
-  datasource,
-  onRow,
-  onItemClick,
-  onBottomScroll
-}) => (
+const List = ({ horizontal, datasource, onRow, onBottomScroll }) => (
   <div
     onScroll={e => {
       const bottom =
@@ -19,11 +12,7 @@ const List = ({
     }}
     className={horizontal ? styles.listHorizontal : styles.list}
   >
-    {datasource.map((item, i) => (
-      <Item key={i} onClick={() => onItemClick(item, i)}>
-        {onRow(item, i)}
-      </Item>
-    ))}
+    {datasource.map((item, i) => onRow(item, i))}
   </div>
 );
 

@@ -1,5 +1,7 @@
 const defaultHeaders = {
-  Authorization: "diogo"
+  Authorization: "diogo",
+  Accept: "application/json",
+  "Content-Type": "application/json"
 };
 
 const request = async (path, method, params = {}) => {

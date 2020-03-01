@@ -88,17 +88,98 @@ const saveCategories = (state, action) => ({
  */
 const saveCategoryPosts = (state, action) => ({
   ...state,
-  categoryPosts: action.response.reduce((acc, val) => {
+  postsByCategory: action.response.reduce((acc, val) => {
     return {
       ...acc,
-      [val.category]: val
+      [val.category]: [...(acc[val.category] ? acc[val.category] : []), val]
     };
   }, {})
 });
 
+const getPosts = (state, action) => ({
+  ...state,
+  posts: action.response
+});
+
+const getPostComments = (state, action) => ({
+  ...state,
+  posts: action.response
+});
+
+const deletePost = (state, action) => ({
+  ...state,
+  postsByCategory: Object.keys(state.postsByCategory).reduce(
+    (acc, key) => ({
+      ...acc,
+      [key]: state.postsByCategory[key].filter(
+        post => post.id !== action.response.id
+      )
+    }),
+    {}
+  ),
+  posts: state.posts.filter(post => post.id !== action.response.id)
+});
+
+const postPost = (state, action) => ({
+  ...state,
+  posts: [...state.posts, action.response],
+  postsByCategory: {
+    ...state.postsByCategory,
+    [action.response.category]: [
+      ...(state.postsByCategory[action.response.category]
+        ? state.postsByCategory[action.response.category]
+        : []),
+      action.response
+    ]
+  }
+});
+
+const postVote = (state, action) => ({
+  ...state,
+  posts: state.posts.map(post => {
+    if (post.id !== action.response.id) {
+      return post;
+    }
+    return action.response;
+  }),
+  postsByCategory: {
+    ...state.postsByCategory,
+    [action.response.category]:
+      state.postsByCategory[action.response.category] &&
+      state.postsByCategory[action.response.category].map(post => {
+        if (post.id !== action.response.id) {
+          return post;
+        }
+        return action.response;
+      })
+  }
+});
+
+const savePostDetails = (state, action) =>
+  console.log(action.response) || {
+    ...state,
+    posts: state.posts.map(post => {
+      if (post.id !== action.response.id) {
+        return post;
+      }
+      return action.response;
+    }),
+    postsByCategory: {
+      ...state.postsByCategory,
+      [action.response.category]:
+        state.postsByCategory[action.response.category] &&
+        state.postsByCategory[action.response.category].map(post => {
+          if (post.id !== action.response.id) {
+            return post;
+          }
+          return action.response;
+        })
+    }
+  };
+
 const initialState = {
   categories: [],
-  categoryPosts: {},
+  postsByCategory: {},
   posts: []
 };
 
@@ -121,11 +202,11 @@ const reducer = (state = initialState, action) => {
     [GET_CATEGORY_POSTS_ERROR]: error,
 
     [GET_POSTS_LOADING]: loading,
-    [GET_POSTS_SUCCESS]: saveCategoryPosts,
+    [GET_POSTS_SUCCESS]: getPosts,
     [GET_POSTS_ERROR]: error,
 
     [POST_POST_LOADING]: loading,
-    [POST_POST_SUCCESS]: saveCategoryPosts,
+    [POST_POST_SUCCESS]: postPost,
     [POST_POST_ERROR]: error,
 
     [GET_POST_LOADING]: loading,
@@ -133,19 +214,19 @@ const reducer = (state = initialState, action) => {
     [GET_POST_ERROR]: error,
 
     [POST_POST_VOTE_LOADING]: loading,
-    [POST_POST_VOTE_SUCCESS]: saveCategoryPosts,
+    [POST_POST_VOTE_SUCCESS]: postVote,
     [POST_POST_VOTE_ERROR]: error,
 
     [PUT_POST_DETAILS_LOADING]: loading,
-    [PUT_POST_DETAILS_SUCCESS]: saveCategoryPosts,
+    [PUT_POST_DETAILS_SUCCESS]: savePostDetails,
     [PUT_POST_DETAILS_ERROR]: error,
 
     [DELETE_POST_LOADING]: loading,
-    [DELETE_POST_SUCCESS]: saveCategoryPosts,
+    [DELETE_POST_SUCCESS]: deletePost,
     [DELETE_POST_ERROR]: error,
 
     [GET_POST_COMMENTS_LOADING]: loading,
-    [GET_POST_COMMENTS_SUCCESS]: saveCategoryPosts,
+    [GET_POST_COMMENTS_SUCCESS]: getPostComments,
     [GET_POST_COMMENTS_ERROR]: error,
 
     [GET_COMMENT_LOADING]: loading,

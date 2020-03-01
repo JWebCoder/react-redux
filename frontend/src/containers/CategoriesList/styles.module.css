@@ -1,7 +1,8 @@
 .container {
   background-color: white;
-  border-bottom: 2px double #e74a18;
+  border-bottom: 2px double var(--primary-color);
 }
+
 .item {
   width: 100px;
   height: 100px;
@@ -9,7 +10,7 @@
 
   cursor: pointer;
   transition: 0.4s;
-  background-color: #e74a18;
+  background-color: var(--primary-color);
   margin-left: 50px;
   margin-right: 50px;
   margin-top: 10px;
@@ -21,7 +22,7 @@
 
 .selected {
   opacity: 0.8;
-  border-bottom: 10px solid #e74a18;
+  border-bottom: 5px solid var(--primary-color);
 }
 
 .title {

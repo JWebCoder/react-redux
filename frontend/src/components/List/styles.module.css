@@ -1,5 +1,9 @@
 .list {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 1;
 }
 
 .listHorizontal {
@@ -18,10 +22,6 @@
 .listHorizontal:hover {
   overflow-y: hidden;
   overflow-x: auto;
-}
-
-.itemClickable {
-  cursor: pointer;
 }
 
 .verticalMargin-1 {
