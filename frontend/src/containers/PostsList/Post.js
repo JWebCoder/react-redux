@@ -15,8 +15,6 @@ const Feed = ({ feed }) => {
       <div className={styles.titleContainer}>
         <span className={styles.author}>{feed.author}</span>
         &nbsp;
-        <span> publicou em </span>
-        &nbsp;
         <span className={styles.category}>{" " + feed.category}</span>
         <Editable.EditableSpan
           allowEdit={feed.author === sessionStorage.getItem("author")}

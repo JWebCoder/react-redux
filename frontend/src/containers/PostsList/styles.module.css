@@ -4,7 +4,7 @@
   flex: 1 1 auto;
   height: 100vh;
   overflow-y: auto;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .post {
@@ -17,6 +17,7 @@
   padding-left: 5px;
   padding-right: 5px;
 
+  margin-top: 15px;
   margin-bottom: 40px;
   margin-right: 100px;
   margin-left: 100px;
@@ -31,16 +32,20 @@
 
 .title {
   background-color: var(--primary-color-light);
+
   padding-top: 5px;
   padding-bottom: 5px;
-
   padding-left: 5px;
-  border-radius: 5px;
+  padding-right: 5px;
+
   font-weight: bold;
   line-height: 20px;
+
+  border-radius: 5px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
   flex-grow: 3;
+
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -58,11 +63,19 @@
   font-weight: bold;
   line-height: 20px;
   flex-grow: 0;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .author {
   font-weight: bold;
   flex-grow: 0;
+  flex-basis: 20%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .body {
@@ -75,9 +88,6 @@
   margin-bottom: 0px;
   margin-top: 0px;
   word-break: break-all;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  line-height: 20px;
 }
 
 .delete {
@@ -121,7 +131,6 @@
 
 @media only screen and (max-width: 767px) {
   .container {
-    padding-top: 50px;
     padding-left: 5px;
     padding-right: 5px;
   }

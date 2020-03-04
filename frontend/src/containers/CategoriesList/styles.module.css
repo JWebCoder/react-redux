@@ -47,15 +47,21 @@
   left: 365px;
 }
 
+@media only screen and (max-width: 1024px) {
+  .addButtonPosition {
+    box-shadow: none;
+  }
+}
+
 @media only screen and (max-width: 800px) {
   .verticalList {
     display: flex;
     flex-direction: row;
     border-bottom: 2px solid var(--primary-color);
     border-right: none;
-    flex: 0 0 90px;
-    justify-content: space-around;
-    height: 90px;
+    flex: 0 0 20%;
+    justify-content: center;
+
     padding-left: 5px;
     padding-right: 5px;
   }
@@ -68,17 +74,18 @@
     cursor: pointer;
     transition: 0.4s;
     max-width: 200px;
-    border-bottom: none;
+    height: 90px;
     opacity: 0.6;
+    border-bottom: none;
   }
 
-  .item:hover {
-    border-bottom: none;
-    transform: none;
+  .selected {
+    opacity: 0.8;
+    border-bottom: 5px solid var(--primary-color);
   }
 
   .addButtonPosition {
-    left: 20px;
+    left: 10px;
     transform: scale(0.9, 0.9);
   }
 }

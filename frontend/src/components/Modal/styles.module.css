@@ -31,7 +31,7 @@
 .close {
   color: #aaaaaa;
   float: right;
-  
+
   font-size: 28px;
   font-weight: bold;
   transition: 0.3s;
@@ -43,4 +43,16 @@
   text-decoration: none;
   cursor: pointer;
   transform: scale(1.1, 1.1);
+}
+
+@media only screen and (max-width: 767px) {
+  .content {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 324px) {
+  .content {
+    width: 90%;
+  }
 }
