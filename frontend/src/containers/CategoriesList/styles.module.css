@@ -43,8 +43,8 @@
 }
 
 .addButtonPosition {
-  top: 20px;
-  left: 315px;
+  top: 60px;
+  left: 365px;
 }
 
 @media only screen and (max-width: 800px) {
@@ -52,25 +52,33 @@
     display: flex;
     flex-direction: row;
     border-bottom: 2px solid var(--primary-color);
-    flex: 0 0 125px;
+    border-right: none;
+    flex: 0 0 90px;
     justify-content: space-around;
+    height: 90px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .verticalList:hover {
+    overflow-y: hidden;
+    overflow-x: auto;
   }
 
   .item {
     cursor: pointer;
     transition: 0.4s;
-    height: 100px;
     max-width: 200px;
     border-bottom: none;
     opacity: 0.6;
   }
 
   .item:hover {
-    border-bottom: 1px double var(--primary-color);
+    border-bottom: none;
+    transform: none;
   }
 
   .addButtonPosition {
-    top: 100px;
-    left: 50%;
+    left: 20px;
+    transform: scale(0.9, 0.9);
   }
 }

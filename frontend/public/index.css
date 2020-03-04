@@ -1,5 +1,7 @@
 :root {
   --primary-color: #e74a18;
+  --primary-color-lighter: #e74a1820;
+  --primary-color-light: #e74a1860;
 }
 body {
   margin: 0px 0px 0px 0px;

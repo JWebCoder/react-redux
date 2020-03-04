@@ -4,22 +4,22 @@
   flex: 1 1 auto;
   height: 100vh;
   overflow-y: auto;
-  margin-top: 30px;
-  padding-right: 100px;
-  padding-left: 100px;
+  margin-top: 20px;
 }
 
 .post {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #e74a1820;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  background-color: var(--primary-color-lighter);
   border-radius: 10px;
+
   padding-left: 5px;
   padding-right: 5px;
+
   margin-bottom: 40px;
+  margin-right: 100px;
+  margin-left: 100px;
 }
 
 .titleContainer {
@@ -27,21 +27,20 @@
   margin-top: 5px;
   margin-bottom: 5px;
   align-items: center;
-  max-height: 30px;
 }
 
 .title {
-  background-color: #e74a1860;
+  background-color: var(--primary-color-light);
   padding-top: 5px;
   padding-bottom: 5px;
-  padding-right: 5px;
+
   padding-left: 5px;
   border-radius: 5px;
   font-weight: bold;
   line-height: 20px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  flex: 1 1 50%;
+  flex-grow: 3;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -58,10 +57,12 @@
   border-bottom-right-radius: 0px;
   font-weight: bold;
   line-height: 20px;
+  flex-grow: 0;
 }
 
 .author {
   font-weight: bold;
+  flex-grow: 0;
 }
 
 .body {
@@ -109,4 +110,26 @@
 
 .likePostContainer > :last-child {
   margin-left: 10px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .post {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .container {
+    padding-top: 50px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+@media only screen and (max-width: 324px) {
+  .container {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 }
