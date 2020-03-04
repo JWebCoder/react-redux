@@ -2,10 +2,14 @@ import React from "react";
 
 import styles from "./styles.module.css";
 
-const Modal = ({ children, allowClose }) => (
+const Modal = ({ children, onCloseClick, allowClose }) => (
   <div className={styles.modal}>
-    <div className={styles.modalContent}>
-      {allowClose && <span className={styles.close}>&times;</span>}
+    <div className={styles.content}>
+      {allowClose && (
+        <span onClick={onCloseClick} className={styles.close}>
+          &times;
+        </span>
+      )}
       {children}
     </div>
   </div>

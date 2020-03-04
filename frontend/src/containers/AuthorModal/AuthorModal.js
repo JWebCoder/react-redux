@@ -13,7 +13,6 @@ const AuthorModal = ({ onClose }) => {
   };
 
   if (sessionStorage.author) {
-    onClose();
     return null;
   }
   return (

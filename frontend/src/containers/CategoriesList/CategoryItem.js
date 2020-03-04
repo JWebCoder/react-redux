@@ -1,5 +1,7 @@
 import React from "react";
 
+import { H2 } from "../../components";
+
 import styles from "./styles.module.css";
 
 const css = selected => {
@@ -12,7 +14,9 @@ const css = selected => {
 
 const CategoryItem = ({ item, selected, onClick }) => (
   <div className={css(selected)} onClick={onClick}>
-    <h2 className={styles.title}>{item.name}</h2>
+    <H2 trim cssClass={styles.title}>
+      {item.name}
+    </H2>
   </div>
 );
 

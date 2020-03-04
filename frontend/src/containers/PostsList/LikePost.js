@@ -2,8 +2,8 @@ import React from "react";
 import { useDispatch } from "react-redux";
 
 import { actionCreators as apiActionCreators } from "../../api";
-
 import { Button } from "../../components";
+
 import styles from "./styles.module.css";
 
 const LikePost = ({ postId, likes }) => {

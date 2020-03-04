@@ -1,35 +1,29 @@
-.container {
-  background-color: white;
-  border-bottom: 2px double var(--primary-color);
+.verticalList {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 300px;
+  border-right: 2px double var(--primary-color);
+  height: 100vh;
+  transition: 0.5s;
+  justify-content: center;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.verticalList:hover {
+  overflow-y: auto;
 }
 
 .item {
-  width: 100px;
-  height: 100px;
-  border-radius: 20px;
-
   cursor: pointer;
   transition: 0.4s;
-  background-color: var(--primary-color);
-  margin-left: 50px;
-  margin-right: 50px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+
+  max-width: 300px;
+
   text-align: center;
   line-height: 100px;
   opacity: 0.6;
-}
-
-.selected {
-  opacity: 0.8;
-  border-bottom: 5px solid var(--primary-color);
-}
-
-.title {
-  color: white;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  border-bottom: 1px double var(--primary-color);
 }
 
 .item:hover {
@@ -37,9 +31,46 @@
   transform: scale(1, 0.9);
 }
 
-@media only screen and (max-width: 1000px) {
+.title {
+  color: var(--primary-color);
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.selected {
+  opacity: 0.8;
+  border-bottom: 5px solid var(--primary-color);
+}
+
+.addButtonPosition {
+  top: 20px;
+  left: 315px;
+}
+
+@media only screen and (max-width: 800px) {
+  .verticalList {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 2px solid var(--primary-color);
+    flex: 0 0 125px;
+    justify-content: space-around;
+  }
+
   .item {
-    margin-left: 10px;
-    margin-right: 10px;
+    cursor: pointer;
+    transition: 0.4s;
+    height: 100px;
+    max-width: 200px;
+    border-bottom: none;
+    opacity: 0.6;
+  }
+
+  .item:hover {
+    border-bottom: 1px double var(--primary-color);
+  }
+
+  .addButtonPosition {
+    top: 100px;
+    left: 50%;
   }
 }

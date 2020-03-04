@@ -14,7 +14,7 @@ const EditableSpan = ({ wrappingClass, value, onNewValue, allowEdit }) => {
   return (
     <React.Fragment>
       {isEdditing ? (
-        <div className={wrappingClass}>
+        <div className={wrappingClass + " " + styles.active}>
           <TextInput
             value={fieldValue}
             onChange={setFieldValue}

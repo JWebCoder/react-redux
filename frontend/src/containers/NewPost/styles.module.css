@@ -1,14 +1,14 @@
 .form {
   margin-top: 10px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin-left: 200px;
-  margin-right: 200px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .form > * {
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 .input {

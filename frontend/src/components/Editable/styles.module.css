@@ -1,3 +1,7 @@
 .editable {
   cursor: pointer;
 }
+
+.active {
+  z-index: 1;
+}

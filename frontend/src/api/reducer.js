@@ -88,12 +88,7 @@ const saveCategories = (state, action) => ({
  */
 const saveCategoryPosts = (state, action) => ({
   ...state,
-  postsByCategory: action.response.reduce((acc, val) => {
-    return {
-      ...acc,
-      [val.category]: [...(acc[val.category] ? acc[val.category] : []), val]
-    };
-  }, {})
+  posts: action.response
 });
 
 const getPosts = (state, action) => ({
@@ -108,30 +103,12 @@ const getPostComments = (state, action) => ({
 
 const deletePost = (state, action) => ({
   ...state,
-  postsByCategory: Object.keys(state.postsByCategory).reduce(
-    (acc, key) => ({
-      ...acc,
-      [key]: state.postsByCategory[key].filter(
-        post => post.id !== action.response.id
-      )
-    }),
-    {}
-  ),
   posts: state.posts.filter(post => post.id !== action.response.id)
 });
 
 const postPost = (state, action) => ({
   ...state,
-  posts: [...state.posts, action.response],
-  postsByCategory: {
-    ...state.postsByCategory,
-    [action.response.category]: [
-      ...(state.postsByCategory[action.response.category]
-        ? state.postsByCategory[action.response.category]
-        : []),
-      action.response
-    ]
-  }
+  posts: [...state.posts, action.response]
 });
 
 const postVote = (state, action) => ({
@@ -141,45 +118,21 @@ const postVote = (state, action) => ({
       return post;
     }
     return action.response;
-  }),
-  postsByCategory: {
-    ...state.postsByCategory,
-    [action.response.category]:
-      state.postsByCategory[action.response.category] &&
-      state.postsByCategory[action.response.category].map(post => {
-        if (post.id !== action.response.id) {
-          return post;
-        }
-        return action.response;
-      })
-  }
+  })
 });
 
-const savePostDetails = (state, action) =>
-  console.log(action.response) || {
-    ...state,
-    posts: state.posts.map(post => {
-      if (post.id !== action.response.id) {
-        return post;
-      }
-      return action.response;
-    }),
-    postsByCategory: {
-      ...state.postsByCategory,
-      [action.response.category]:
-        state.postsByCategory[action.response.category] &&
-        state.postsByCategory[action.response.category].map(post => {
-          if (post.id !== action.response.id) {
-            return post;
-          }
-          return action.response;
-        })
+const savePostDetails = (state, action) => ({
+  ...state,
+  posts: state.posts.map(post => {
+    if (post.id !== action.response.id) {
+      return post;
     }
-  };
+    return action.response;
+  })
+});
 
 const initialState = {
   categories: [],
-  postsByCategory: {},
   posts: []
 };
 

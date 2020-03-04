@@ -3,9 +3,12 @@
 }
 body {
   margin: 0px 0px 0px 0px;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 * {
   font-family: Helvetica, sans-serif;
+  outline-color: transparent;
 }
 
 h2,

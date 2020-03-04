@@ -1,18 +1,44 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import PostHeader from "./PostHeader";
 import LikePost from "./LikePost";
-import { Editable } from "../../components";
 import styles from "./styles.module.css";
+
+import { Editable, Row, Col } from "../../components";
 import { actionCreators as apiActionCreators } from "../../api";
+
 const Feed = ({ feed }) => {
   const dispatch = useDispatch();
-  const postComments = useSelector(state => state.apiReducer.commentsByPost);
 
   return (
     <div className={styles.post}>
-      <PostHeader feed={feed} />
+      <div className={styles.titleContainer}>
+        <span className={styles.author}>{feed.author}</span>
+        &nbsp;
+        <span> publicou em </span>
+        &nbsp;
+        <span className={styles.category}>{" " + feed.category}</span>
+        <Editable.EditableSpan
+          allowEdit={feed.author === sessionStorage.getItem("author")}
+          value={feed.title}
+          wrappingClass={styles.title}
+          onNewValue={value => {
+            dispatch(
+              apiActionCreators.putPostDetails(feed.id, value, feed.body)
+            );
+          }}
+        />
+        {feed.author === sessionStorage.getItem("author") && (
+          <span
+            className={styles.delete}
+            onClick={() => {
+              dispatch(apiActionCreators.deletePost(feed.id));
+            }}
+          >
+            &times;
+          </span>
+        )}
+      </div>
       <Editable.EditableP
         allowEdit={feed.author === sessionStorage.getItem("author")}
         value={feed.body}
@@ -24,7 +50,6 @@ const Feed = ({ feed }) => {
         }}
       />
       <LikePost likes={feed.voteScore} postId={feed.id} />
-      {feed.commentCount > 0 ? <p>CommentCount {feed.commentCount}</p> : null}
     </div>
   );
 };
