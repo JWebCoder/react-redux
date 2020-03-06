@@ -13,5 +13,8 @@
     "title_validation": "O novo post precisa de um titúlo",
     "body_validation": "O novo post precisa de um corpo",
     "category_validation": "O novo post precisa de uma categoria"
+  },
+  "qqq": {
+    "w": "pt"
   }
 }

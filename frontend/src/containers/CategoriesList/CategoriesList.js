@@ -1,20 +1,20 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { actionCreators as apiActionCreators } from "../../api";
-import { Button } from "../../components";
-import { useTranslations } from "../useTranslations";
 
-import * as actionsCreators from "./actionsCreator";
 import CategoryItem from "../CategoriesList/CategoryItem";
 import styles from "./styles.module.css";
 
+import { actionCreators as apiActionCreators } from "../../api";
+import { Button } from "../../components";
+
+import * as actionsCreators from "./actionsCreator";
+
 const CategoriesList = ({ onNewPost }) => {
-  const [v, q] = useTranslations();
-  console.log("VALUE CategoriesList", v);
   const dispatch = useDispatch();
   const currentCategory = useSelector(
     state => state.categoryListReducer.currentCategory
   );
+
   useEffect(() => {
     dispatch(apiActionCreators.getCategories());
   }, [dispatch]);
