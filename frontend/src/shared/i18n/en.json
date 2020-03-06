@@ -1,0 +1,17 @@
+{
+  "author_modal": {
+    "title": "Author",
+    "author_placeholder": "Author",
+    "author_validation": "Author is required",
+    "submit": "Accept"
+  },
+  "new_post_modal": {
+    "title_placeholder": "Title",
+    "body_placeholder": "Body",
+    "category_title": "Choose one category",
+    "submit": "New post",
+    "title_validation": "The new post needs a title",
+    "body_validation": "The new post needs a body",
+    "category_validation": "The new post needs one category"
+  }
+}

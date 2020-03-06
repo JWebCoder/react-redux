@@ -5,12 +5,17 @@ import store from "./store";
 
 import { Provider } from "react-redux";
 import { FeedsPage } from "./containers";
-
+import { pt, en } from "./shared";
 import * as serviceWorker from "./serviceWorker";
+import { context as TranslationsContext } from "./containers/useTranslations";
 
 ReactDOM.render(
   <Provider store={store}>
-    <FeedsPage />
+    <TranslationsContext.Provider
+      value={{ lang: "pt", strings: { pt, en }, subscribers: [] }}
+    >
+      <FeedsPage />
+    </TranslationsContext.Provider>
   </Provider>,
   document.getElementById("root")
 );

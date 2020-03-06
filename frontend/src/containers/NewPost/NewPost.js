@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { useTranslations } from "../useTranslations";
 import { TextInput, Button, TextArea, Modal, Select } from "../../components";
 import { actionCreators as apiActionCreators } from "../../api";
 
 import styles from "./styles.module.css";
 
 const NewPostModal = ({ onCloseClick, visibility }) => {
+  const [translations] = useTranslations("new_post_modal");
+
   const initialValues = { title: "", body: "" };
 
   const dispatch = useDispatch();
@@ -47,24 +50,24 @@ const NewPostModal = ({ onCloseClick, visibility }) => {
       <form className={styles.form} onSubmit={onFormSubmit}>
         <div className={styles.input}>
           <TextInput
-            placeholder="Titúlo"
+            placeholder={translations.title_placeholder}
             onChange={value => updateForm("title", value)}
-            requiredMessage="O post precisa de um titúlo"
+            requiredMessage={translations.title_validation}
             value={formVal.title}
           />
         </div>
         <div className={styles.input}>
           <TextArea
-            placeholder="Corpo"
+            placeholder={translations.body_placeholder}
             onChange={value => updateForm("body", value)}
-            requiredMessage="O post precisa de um corpo"
+            requiredMessage={translations.title_validation}
             value={formVal.body}
           />
         </div>
         <div>
           <Select
-            defaultTitle="Escolha uma categoria"
-            requiredMessage={"È necessário escolher uma categoria"}
+            defaultTitle={translations.category_title}
+            requiredMessage={translations.category_validation}
             onChange={e => updateForm("category", e.target.value)}
             selected={currentCategory}
             datasource={categories.map(category => ({
@@ -73,7 +76,7 @@ const NewPostModal = ({ onCloseClick, visibility }) => {
             }))}
           />
         </div>
-        <Button>Novo Post</Button>
+        <Button>{translations.submit}</Button>
       </form>
     </Modal>
   );

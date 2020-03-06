@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import LikePost from "./LikePost";
 import styles from "./styles.module.css";
 
-import { Editable, Row, Col } from "../../components";
+import { Editable } from "../../components";
 import { actionCreators as apiActionCreators } from "../../api";
 
 const Feed = ({ feed }) => {

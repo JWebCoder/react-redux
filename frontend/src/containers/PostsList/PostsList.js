@@ -3,13 +3,12 @@ import { useSelector } from "react-redux";
 
 import Post from "./Post";
 import styles from "./styles.module.css";
-
-import { List } from "../../components";
-
+import { useTranslations } from "../useTranslations";
 const PostsList = () => {
-  const posts = useSelector(state => state.apiReducer.posts);
+  const [v, q] = useTranslations();
+  console.log("VALUE PostsList", v);
 
-  const onRow = item => <Post key={item.id} feed={item} />;
+  const posts = useSelector(state => state.apiReducer.posts);
 
   return (
     <div className={styles.container}>

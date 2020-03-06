@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 
 import { Modal, TextInput, Button } from "../../components";
-
+import { useTranslations } from "../useTranslations";
 import styles from "./styles.module.css";
+
 const AuthorModal = ({ onClose }) => {
+  const [translations] = useTranslations("author_modal");
   const [inputAuthorVal, setInputAuthorVal] = useState("");
 
   const handleSubmit = () => {
@@ -18,13 +20,13 @@ const AuthorModal = ({ onClose }) => {
   return (
     <Modal allowClose={false}>
       <form onSubmit={handleSubmit} className={styles.form}>
-        <h3>Autor</h3>
+        <h3>{translations.title}</h3>
         <TextInput
-          placeholder="Author"
+          placeholder={translations.author_placeholder}
           onChange={setInputAuthorVal}
-          requiredMessage="O seu nome "
+          requiredMessage={translations.author_validation}
         />
-        <Button>Aceitar </Button>
+        <Button>{translations.submit}</Button>
       </form>
     </Modal>
   );

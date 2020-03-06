@@ -7,7 +7,6 @@ import AuthorModal from "../AuthorModal";
 import NewPostModal from "../NewPost";
 
 import { actionCreators as apiActionCreators } from "../../api";
-import { Button } from "../../components";
 import styles from "./styles.module.css";
 
 const FeedsPage = () => {

@@ -22,22 +22,7 @@ import {
   PUT_POST_DETAILS_ERROR,
   DELETE_POST_LOADING,
   DELETE_POST_SUCCESS,
-  DELETE_POST_ERROR,
-  GET_POST_COMMENTS_LOADING,
-  GET_POST_COMMENTS_SUCCESS,
-  GET_POST_COMMENTS_ERROR,
-  GET_COMMENT_LOADING,
-  GET_COMMENT_SUCCESS,
-  GET_COMMENT_ERROR,
-  POST_COMMENT_VOTE_LOADING,
-  POST_COMMENT_VOTE_SUCCESS,
-  POST_COMMENT_VOTE_ERROR,
-  PUT_COMMENT_DETAILS_LOADING,
-  PUT_COMMENT_DETAILS_SUCCESS,
-  PUT_COMMENT_DETAILS_ERROR,
-  DELETE_COMMENT_LOADING,
-  DELETE_COMMENT_SUCCESS,
-  DELETE_COMMENT_ERROR
+  DELETE_POST_ERROR
 } from "./actionTypes";
 
 /**
@@ -91,26 +76,51 @@ const saveCategoryPosts = (state, action) => ({
   posts: action.response
 });
 
+/**
+ * Builds the new state with the requested posts
+ *
+ * @param {object} state - Current state.
+ * @param {object} action - The action that was dispatched
+ * @param {object} action.response - One object that contains the new posts
+ */
 const getPosts = (state, action) => ({
   ...state,
   posts: action.response
 });
 
-const getPostComments = (state, action) => ({
-  ...state,
-  posts: action.response
-});
-
+/**
+ * Builds the new state with a given post deleted
+ *
+ * @param {object} state - Current state.
+ * @param {object} action - The action that was dispatched
+ * @param {object} action.response - One object that contains the deleted post
+ * @param {string} action.response.id - The deleted post id
+ */
 const deletePost = (state, action) => ({
   ...state,
   posts: state.posts.filter(post => post.id !== action.response.id)
 });
 
+/**
+ * Builds the new state with the new post
+ *
+ * @param {object} state - Current state.
+ * @param {object} action - The action that was dispatched
+ * @param {object} action.response - One object that contains the new post
+ */
 const postPost = (state, action) => ({
   ...state,
   posts: [...state.posts, action.response]
 });
 
+/**
+ * Builds the new state with the voted post updated
+ *
+ * @param {object} state - Current state.
+ * @param {object} action - The action that was dispatched
+ * @param {object} action.response - One object that contains the voted post
+ * @param {string} action.response.id - The id of the voted post
+ */
 const postVote = (state, action) => ({
   ...state,
   posts: state.posts.map(post => {
@@ -121,6 +131,14 @@ const postVote = (state, action) => ({
   })
 });
 
+/**
+ * Builds the new state with updated post details
+ *
+ * @param {object} state - Current state.
+ * @param {object} action - The action that was dispatched
+ * @param {object} action.response - One object that contains updated post
+ * @param {string} action.response.id - The id of updated post
+ */
 const savePostDetails = (state, action) => ({
   ...state,
   posts: state.posts.map(post => {
@@ -176,27 +194,7 @@ const reducer = (state = initialState, action) => {
 
     [DELETE_POST_LOADING]: loading,
     [DELETE_POST_SUCCESS]: deletePost,
-    [DELETE_POST_ERROR]: error,
-
-    [GET_POST_COMMENTS_LOADING]: loading,
-    [GET_POST_COMMENTS_SUCCESS]: getPostComments,
-    [GET_POST_COMMENTS_ERROR]: error,
-
-    [GET_COMMENT_LOADING]: loading,
-    [GET_COMMENT_SUCCESS]: saveCategoryPosts,
-    [GET_COMMENT_ERROR]: error,
-
-    [POST_COMMENT_VOTE_LOADING]: loading,
-    [POST_COMMENT_VOTE_SUCCESS]: saveCategoryPosts,
-    [POST_COMMENT_VOTE_ERROR]: error,
-
-    [PUT_COMMENT_DETAILS_LOADING]: loading,
-    [PUT_COMMENT_DETAILS_SUCCESS]: saveCategoryPosts,
-    [PUT_COMMENT_DETAILS_ERROR]: error,
-
-    [DELETE_COMMENT_LOADING]: loading,
-    [DELETE_COMMENT_SUCCESS]: saveCategoryPosts,
-    [DELETE_COMMENT_ERROR]: error
+    [DELETE_POST_ERROR]: error
   };
 
   return mapper[action.type] ? mapper[action.type](state, action) : state;

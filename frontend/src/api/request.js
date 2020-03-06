@@ -21,7 +21,7 @@ const request = async (path, method, params = {}) => {
       envelope
     };
   } catch (e) {
-    return e;
+    throw e;
   }
 };
 
