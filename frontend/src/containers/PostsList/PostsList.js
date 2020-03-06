@@ -3,11 +3,8 @@ import { useSelector } from "react-redux";
 
 import Post from "./Post";
 import styles from "./styles.module.css";
-import { useTranslations } from "../useTranslations";
-const PostsList = () => {
-  const [v, q] = useTranslations();
-  console.log("VALUE PostsList", v);
 
+const PostsList = () => {
   const posts = useSelector(state => state.apiReducer.posts);
 
   return (

@@ -6,17 +6,17 @@ import PostsList from "../PostsList";
 import AuthorModal from "../AuthorModal";
 import NewPostModal from "../NewPost";
 
-import { actionCreators as apiActionCreators } from "../../api";
+import { api } from "../../shared";
 import styles from "./styles.module.css";
 
 const FeedsPage = () => {
   const [modalVisibility, setModalVIsibility] = useState(false);
   const dispatch = useDispatch();
   const posts = useSelector(state => state.apiReducer.posts);
-  const onAuthor = () => dispatch(apiActionCreators.getPosts());
+  const onAuthor = () => dispatch(api.actionCreators.getPosts());
 
   useEffect(() => {
-    dispatch(apiActionCreators.getPosts());
+    dispatch(api.actionCreators.getPosts());
   }, [dispatch]);
 
   useEffect(() => {

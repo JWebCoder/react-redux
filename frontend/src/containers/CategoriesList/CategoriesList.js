@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CategoryItem from "../CategoriesList/CategoryItem";
 import styles from "./styles.module.css";
 
-import { actionCreators as apiActionCreators } from "../../api";
+import { api } from "../../shared";
 import { Button } from "../../components";
 
 import * as actionsCreators from "./actionsCreator";
@@ -16,7 +16,7 @@ const CategoriesList = ({ onNewPost }) => {
   );
 
   useEffect(() => {
-    dispatch(apiActionCreators.getCategories());
+    dispatch(api.actionCreators.getCategories());
   }, [dispatch]);
 
   const categories = useSelector(state => state.apiReducer.categories);
@@ -37,7 +37,7 @@ const CategoriesList = ({ onNewPost }) => {
           selected={item.name === currentCategory}
           onClick={() => {
             dispatch(actionsCreators.chooseCategory(item.name));
-            dispatch(apiActionCreators.getCategoryPosts(item.name));
+            dispatch(api.actionCreators.getCategoryPosts(item.name));
           }}
         />
       ))}

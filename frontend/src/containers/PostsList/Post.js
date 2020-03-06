@@ -5,7 +5,7 @@ import LikePost from "./LikePost";
 import styles from "./styles.module.css";
 
 import { Editable } from "../../components";
-import { actionCreators as apiActionCreators } from "../../api";
+import { api } from "../../shared";
 
 const Feed = ({ feed }) => {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ const Feed = ({ feed }) => {
           wrappingClass={styles.title}
           onNewValue={value => {
             dispatch(
-              apiActionCreators.putPostDetails(feed.id, value, feed.body)
+              api.actionCreators.putPostDetails(feed.id, value, feed.body)
             );
           }}
         />
@@ -30,7 +30,7 @@ const Feed = ({ feed }) => {
           <span
             className={styles.delete}
             onClick={() => {
-              dispatch(apiActionCreators.deletePost(feed.id));
+              dispatch(api.actionCreators.deletePost(feed.id));
             }}
           >
             &times;
@@ -43,7 +43,7 @@ const Feed = ({ feed }) => {
         wrappingClass={styles.body}
         onNewValue={value => {
           dispatch(
-            apiActionCreators.putPostDetails(feed.id, feed.title, value)
+            api.actionCreators.putPostDetails(feed.id, feed.title, value)
           );
         }}
       />

@@ -22,7 +22,7 @@ function useTranslations(component) {
         (v, i) => i !== subscriptionId
       );
     };
-  }, []);
+  }, [contextObj.subscribers]);
 
   const updateLanguageAndNotify = lang => {
     contextObj.lang = lang;

@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
-import { actionCreators as apiActionCreators } from "../../api";
+import { api } from "../../shared";
 import { Button } from "../../components";
 
 import styles from "./styles.module.css";
@@ -10,7 +10,7 @@ const LikePost = ({ postId, likes }) => {
   const dispatch = useDispatch();
 
   const vote = voteup => {
-    dispatch(apiActionCreators.postPostVote(postId, voteup));
+    dispatch(api.actionCreators.postPostVote(postId, voteup));
   };
 
   return (

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { useTranslations } from "../useTranslations";
 import { TextInput, Button, TextArea, Modal, Select } from "../../components";
-import { actionCreators as apiActionCreators } from "../../api";
+import { api } from "../../shared";
 
 import styles from "./styles.module.css";
 
@@ -36,7 +36,7 @@ const NewPostModal = ({ onCloseClick, visibility }) => {
     event.preventDefault();
     setFormVal(initialValues);
     return dispatch(
-      apiActionCreators.postPost(
+      api.actionCreators.postPost(
         formVal.title,
         formVal.body,
         sessionStorage.getItem("author"),
