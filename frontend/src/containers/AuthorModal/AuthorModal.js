@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
 import { Modal, Button } from "../../components";
 import { useTranslations } from "../useTranslations";
+import { useModal } from "../useModal";
 import { Form } from "../Form";
 import { FormFields } from "..";
 
@@ -10,16 +11,23 @@ import { FormFields } from "..";
  * Modal to allow user to enter the session author name
  */
 const AuthorModal = ({ onAuthor }) => {
+  const [authorModal, setAuthorModal] = useModal("author_modal");
   const [translations] = useTranslations("author_modal");
 
+  useEffect(() => {
+    setAuthorModal(!sessionStorage.author);
+  }, [setAuthorModal]);
+
   const handleSubmit = values => {
-    sessionStorage.setItem("author", values);
+    sessionStorage.setItem("author", values.name);
     onAuthor();
+    setAuthorModal(false);
   };
 
-  if (sessionStorage.author) {
+  if (!authorModal) {
     return null;
   }
+
   return (
     <Modal allowClose={false}>
       <Form id="author" onSubmit={handleSubmit}>
@@ -27,7 +35,8 @@ const AuthorModal = ({ onAuthor }) => {
         <FormFields.TextInput
           placeholder={translations.author_placeholder}
           requiredMessage={translations.author_validation}
-          fieldname="authorname"
+          fieldName="name"
+          þ
         />
         <Button>{translations.submit}</Button>
       </Form>

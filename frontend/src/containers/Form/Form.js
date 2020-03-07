@@ -28,10 +28,4 @@ const Form = ({ children, id, onSubmit }) => {
   );
 };
 
-function shouldRerender() {
-  return false;
-}
-
-const MemoizedForm = React.memo(Form, shouldRerender);
-
-export default MemoizedForm;
+export default Form;

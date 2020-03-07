@@ -2,14 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { useSelector } from "react-redux";
-
 import { useTranslations } from "../useTranslations";
 import { useModal } from "../useModal";
 import { Button, Modal } from "../../components";
 import { Form } from "../Form";
 import { FormFields } from "..";
-
-import styles from "./styles.module.css";
 
 /**
  * Modal to present one form for one new post
@@ -24,12 +21,8 @@ const NewPostModal = ({ onPost }) => {
 
   const categories = useSelector(state => state.apiReducer.categories);
 
-  if (!postsModal) {
-    return null;
-  }
-
   const onFormSubmit = values => {
-    console.log("values", values);
+    setPostsModal(false);
     onPost({
       title: values.title,
       body: values.body,
@@ -38,35 +31,35 @@ const NewPostModal = ({ onPost }) => {
     });
   };
 
+  if (!postsModal) {
+    return null;
+  }
   return (
     <Modal allowClose={true} onCloseClick={() => setPostsModal(false)}>
-      <Form onSubmit={onFormSubmit}>
-        <div className={styles.input}>
-          <FormFields.TextInput
-            placeholder={translations.title_placeholder}
-            requiredMessage={translations.title_validation}
-            fieldName={"title"}
-          />
-        </div>
-        <div className={styles.input}>
-          <FormFields.TextArea
-            placeholder={translations.body_placeholder}
-            requiredMessage={translations.title_validation}
-            fieldName={"body"}
-          />
-        </div>
-        <div>
-          <FormFields.Select
-            defaultTitle={translations.category_title}
-            requiredMessage={translations.category_validation}
-            selected={currentCategory}
-            datasource={categories.map(category => ({
-              value: category.path,
-              text: category.name
-            }))}
-            fieldName={"category"}
-          />
-        </div>
+      <Form id="post" onSubmit={onFormSubmit}>
+        <FormFields.TextInput
+          placeholder={translations.title_placeholder}
+          requiredMessage={translations.title_validation}
+          fieldName={"title"}
+        />
+
+        <FormFields.TextArea
+          placeholder={translations.body_placeholder}
+          requiredMessage={translations.title_validation}
+          fieldName={"body"}
+        />
+
+        <FormFields.Select
+          defaultTitle={translations.category_title}
+          requiredMessage={translations.category_validation}
+          selected={currentCategory}
+          datasource={categories.map(category => ({
+            value: category.path,
+            text: category.name
+          }))}
+          fieldName={"category"}
+        />
+
         <Button>{translations.submit}</Button>
       </Form>
     </Modal>

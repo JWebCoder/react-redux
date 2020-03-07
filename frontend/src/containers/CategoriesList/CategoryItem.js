@@ -1,6 +1,6 @@
 import React from "react";
 
-import { H2 } from "../../components";
+import { useSelector } from "react-redux";
 
 import styles from "./styles.module.css";
 
@@ -12,12 +12,15 @@ const css = selected => {
   return cssClasses.join(" ");
 };
 
-const CategoryItem = ({ item, selected, onClick }) => (
-  <div className={css(selected)} onClick={onClick}>
-    <H2 trim cssClass={styles.title}>
-      {item.name}
-    </H2>
-  </div>
-);
+const CategoryItem = ({ item, onClick }) => {
+  const currentCategory = useSelector(
+    state => state.categoryListReducer.currentCategory
+  );
+  return (
+    <div className={css(item.name === currentCategory)} onClick={onClick}>
+      <h2 className={styles.title + " " + styles.trim}>{item.name}</h2>
+    </div>
+  );
+};
 
 export default CategoryItem;

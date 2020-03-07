@@ -7,7 +7,7 @@ import styles from "./styles.module.css";
 import { Editable } from "../../components";
 import { api } from "../../shared";
 
-const Feed = ({ feed }) => {
+const Post = ({ feed }) => {
   const dispatch = useDispatch();
 
   return (
@@ -56,4 +56,6 @@ const Feed = ({ feed }) => {
   );
 };
 
-export default React.memo(Feed);
+export default React.memo(Post, () => {
+  return false;
+});

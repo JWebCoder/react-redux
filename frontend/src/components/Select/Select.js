@@ -1,7 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import styles from "./styles.module.css";
 
+/**
+ * One select component
+ */
 const Select = ({
   datasource,
   selected,
@@ -12,8 +16,6 @@ const Select = ({
   <select
     className={styles.select}
     onChange={e => onChange(e.target.value)}
-    id="country"
-    name="country"
     value={selected}
     required={!!requiredMessage}
     onInvalid={e => e.target.setCustomValidity(requiredMessage)}
@@ -27,5 +29,35 @@ const Select = ({
     ))}
   </select>
 );
+
+Select.propTypes = {
+  /**
+   * Callback to be called when the option changes
+   */
+  onChange: PropTypes.func.isRequired,
+  /**
+   * The select options with two keys
+   * - value
+   * - text
+   */
+  datasource: PropTypes.array.isRequired,
+  /**
+   * The defalt option title
+   */
+  defaultTitle: PropTypes.string.isRequired,
+  /**
+   * Indicate the selected VALUE
+   */
+  selected: PropTypes.string,
+  /**
+   * Set required select and the requred message
+   */
+  requiredMessage: PropTypes.string
+};
+
+Select.defaultProps = {
+  selected: null,
+  requiredMessage: null
+};
 
 export default Select;

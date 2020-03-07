@@ -10,7 +10,6 @@ import * as context from "./context";
 function useTranslations(component) {
   const contextObj = useContext(context.context);
   const strings = contextObj.strings;
-
   const [langVal, setLang] = useState(contextObj.lang);
 
   useEffect(() => {
@@ -25,14 +24,20 @@ function useTranslations(component) {
   }, [contextObj.subscribers]);
 
   const updateLanguageAndNotify = lang => {
+    const allowedLangsKeys = Object.keys(strings);
+
+    if (!allowedLangsKeys.includes(lang)) {
+      return;
+    }
+    console.log("UPDATE ", lang);
     contextObj.lang = lang;
     contextObj.subscribers.forEach(sub => sub(lang));
   };
-
+  console.log("LANG ", langVal);
   return [
     {
-      ...strings[langVal][component],
-      __lang: contextObj.lang
+      __lang: contextObj.lang,
+      ...strings[langVal][component]
     },
     updateLanguageAndNotify
   ];

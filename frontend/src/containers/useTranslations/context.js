@@ -1,5 +1,5 @@
 import React from "react";
 
-const context = React.createContext({ listner: null });
+const context = React.createContext();
 const { Provider } = context;
 export { Provider, context };

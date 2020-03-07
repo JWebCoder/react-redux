@@ -18,7 +18,11 @@ ReactDOM.render(
       }}
     >
       <TranslationsContext.Provider
-        value={{ lang: "pt", strings: { pt, en }, subscribers: [] }}
+        value={{
+          lang: localStorage.getItem("lang"),
+          strings: { pt, en },
+          subscribers: []
+        }}
       >
         <FeedsPage />
       </TranslationsContext.Provider>

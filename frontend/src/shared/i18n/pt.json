@@ -14,7 +14,8 @@
     "body_validation": "O novo post precisa de um corpo",
     "category_validation": "O novo post precisa de uma categoria"
   },
-  "qqq": {
-    "w": "pt"
+  "posts_list": {
+    "nodata_title": "Sem Posts",
+    "nodata_hint": "Carregue no botão '+' para adionar posts"
   }
 }

@@ -6,14 +6,10 @@ import styles from "./styles.module.css";
 
 import { api } from "../../shared";
 import { Button } from "../../components";
-
 import * as actionsCreators from "./actionsCreator";
 
 const CategoriesList = ({ onNewPost }) => {
   const dispatch = useDispatch();
-  const currentCategory = useSelector(
-    state => state.categoryListReducer.currentCategory
-  );
 
   useEffect(() => {
     dispatch(api.actionCreators.getCategories());
@@ -23,18 +19,13 @@ const CategoriesList = ({ onNewPost }) => {
 
   return (
     <React.Fragment>
-      <Button
-        floating
-        cssPosition={styles.addButtonPosition}
-        onClick={onNewPost}
-      >
+      <Button floating className={styles.addButtonPosition} onClick={onNewPost}>
         <i className="fa fa-plus my-float"></i>
       </Button>
       {categories.map(item => (
         <CategoryItem
           key={item.name}
           item={item}
-          selected={item.name === currentCategory}
           onClick={() => {
             dispatch(actionsCreators.chooseCategory(item.name));
             dispatch(api.actionCreators.getCategoryPosts(item.name));

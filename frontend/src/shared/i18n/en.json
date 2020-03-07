@@ -14,7 +14,8 @@
     "body_validation": "The new post needs a body",
     "category_validation": "The new post needs one category"
   },
-  "qqq": {
-    "w": "en"
+  "posts_list": {
+    "nodata_title": "No posts",
+    "nodata_hint": "Push the '+' button to add new posts"
   }
 }

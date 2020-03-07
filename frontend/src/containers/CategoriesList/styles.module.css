@@ -31,6 +31,12 @@
   left: 365px;
 }
 
+.trim {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 @media only screen and (max-width: 1024px) {
   .addButtonPosition {
     box-shadow: none;

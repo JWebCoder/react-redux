@@ -23,7 +23,7 @@ function useModal(name) {
         (v, i) => i !== subscriptionId
       );
     };
-  }, [contextObj.subscribers]);
+  }, [contextObj.subscribers, name]);
 
   const runSubsribers = visible => {
     contextObj.subscribers[name].forEach(sub => sub(visible));
