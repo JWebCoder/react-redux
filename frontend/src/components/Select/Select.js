@@ -11,7 +11,7 @@ const Select = ({
 }) => (
   <select
     className={styles.select}
-    onChange={onChange}
+    onChange={e => onChange(e.target.value)}
     id="country"
     name="country"
     value={selected}

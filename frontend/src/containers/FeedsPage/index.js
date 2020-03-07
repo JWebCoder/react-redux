@@ -1,38 +1,51 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import CategoriesList from "../CategoriesList";
 import PostsList from "../PostsList";
 import AuthorModal from "../AuthorModal";
-import NewPostModal from "../NewPost";
-
-import { api } from "../../shared";
+import NewPostModal from "../NewPostModal";
 import styles from "./styles.module.css";
 
+import { useModal } from "../useModal";
+import { api } from "../../shared";
+
 const FeedsPage = () => {
-  const [modalVisibility, setModalVIsibility] = useState(false);
   const dispatch = useDispatch();
+  const [, setPostsModal] = useModal("postsmodal");
+
   const posts = useSelector(state => state.apiReducer.posts);
   const onAuthor = () => dispatch(api.actionCreators.getPosts());
+
+  const onPost = post =>
+    dispatch(
+      api.actionCreators.postPost(
+        post.title,
+        post.body,
+        post.author,
+        post.category
+      )
+    );
 
   useEffect(() => {
     dispatch(api.actionCreators.getPosts());
   }, [dispatch]);
 
   useEffect(() => {
-    setModalVIsibility(!posts.length);
+    setPostsModal(!posts.length);
   }, [posts.length]);
 
   return (
     <React.Fragment>
-      <AuthorModal onClose={onAuthor} />
-      <NewPostModal
-        onCloseClick={() => setModalVIsibility(false)}
-        visibility={modalVisibility}
-      />
+      <AuthorModal onAuthor={onAuthor} />
+      <NewPostModal onPost={onPost} />
       <div className={styles.container}>
-        <CategoriesList onNewPost={() => setModalVIsibility(true)} />
-        <PostsList />
+        <div className={styles.categoriesContainer}>
+          <CategoriesList onNewPost={() => setPostsModal(true)} />
+        </div>
+        <div className={styles.postsContainer}>
+          <PostsList />
+        </div>
       </div>
     </React.Fragment>
   );

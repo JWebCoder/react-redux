@@ -1,17 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 
-import { Modal, TextInput, Button } from "../../components";
+import { Modal, Button } from "../../components";
 import { useTranslations } from "../useTranslations";
-import styles from "./styles.module.css";
+import { Form } from "../Form";
+import { FormFields } from "..";
 
-const AuthorModal = ({ onClose }) => {
+/**
+ * Modal to allow user to enter the session author name
+ */
+const AuthorModal = ({ onAuthor }) => {
   const [translations] = useTranslations("author_modal");
-  const [inputAuthorVal, setInputAuthorVal] = useState("");
 
-  const handleSubmit = () => {
-    sessionStorage.setItem("author", inputAuthorVal);
-    setInputAuthorVal("");
-    onClose();
+  const handleSubmit = values => {
+    sessionStorage.setItem("author", values);
+    onAuthor();
   };
 
   if (sessionStorage.author) {
@@ -19,17 +22,24 @@ const AuthorModal = ({ onClose }) => {
   }
   return (
     <Modal allowClose={false}>
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <Form id="author" onSubmit={handleSubmit}>
         <h3>{translations.title}</h3>
-        <TextInput
+        <FormFields.TextInput
           placeholder={translations.author_placeholder}
-          onChange={setInputAuthorVal}
           requiredMessage={translations.author_validation}
+          fieldname="authorname"
         />
         <Button>{translations.submit}</Button>
-      </form>
+      </Form>
     </Modal>
   );
+};
+
+AuthorModal.propTypes = {
+  /**
+   * Callback function to be called when the modal action is to close
+   */
+  onAuthor: PropTypes.func.isRequired
 };
 
 export default AuthorModal;

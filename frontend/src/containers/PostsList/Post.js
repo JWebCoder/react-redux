@@ -13,13 +13,17 @@ const Feed = ({ feed }) => {
   return (
     <div className={styles.post}>
       <div className={styles.titleContainer}>
-        <span className={styles.author}>{feed.author}</span>
+        <span className={styles.author + " " + styles.trimText}>
+          {feed.author}
+        </span>
         &nbsp;
-        <span className={styles.category}>{" " + feed.category}</span>
+        <span className={styles.category + " " + styles.trimText}>
+          {" " + feed.category}
+        </span>
         <Editable.EditableSpan
           allowEdit={feed.author === sessionStorage.getItem("author")}
           value={feed.title}
-          wrappingClass={styles.title}
+          wrappingClass={styles.title + " " + styles.trimText}
           onNewValue={value => {
             dispatch(
               api.actionCreators.putPostDetails(feed.id, value, feed.body)

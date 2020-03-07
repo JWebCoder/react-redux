@@ -1,12 +1,3 @@
-.container {
-  display: block;
-  flex-direction: column;
-  flex: 1 1 auto;
-  height: 100vh;
-  overflow-y: auto;
-  margin-top: 30px;
-}
-
 .post {
   display: flex;
   flex-direction: column;
@@ -14,8 +5,7 @@
   background-color: var(--primary-color-lighter);
   border-radius: 10px;
 
-  padding-left: 5px;
-  padding-right: 5px;
+  padding: 5px 5px 5px 5px;
 
   margin-top: 15px;
   margin-bottom: 40px;
@@ -23,20 +13,22 @@
   margin-left: 100px;
 }
 
+.trimText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .titleContainer {
   display: flex;
-  margin-top: 5px;
-  margin-bottom: 5px;
   align-items: center;
+  height: 40px;
 }
 
 .title {
   background-color: var(--primary-color-light);
 
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding: 5px 5px 5px 5px;
 
   font-weight: bold;
   line-height: 20px;
@@ -45,48 +37,34 @@
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
   flex-grow: 3;
-
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .category {
   background-color: white;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-right: 5px;
-  padding-left: 5px;
+
+  padding: 5px 5px 5px 5px;
+
   border-radius: 5px;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
+
   font-weight: bold;
   line-height: 20px;
-  flex-grow: 0;
 
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  flex-grow: 0;
 }
 
 .author {
   font-weight: bold;
   flex-grow: 0;
-  flex-basis: 20%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .body {
   background-color: white;
   min-height: 50px;
 
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top: 5px;
-  margin-bottom: 0px;
-  margin-top: 0px;
+  padding: 5px 5px 5px 5px;
+
   word-break: break-all;
 }
 
@@ -129,16 +107,21 @@
   }
 }
 
-@media only screen and (max-width: 767px) {
-  .container {
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-}
-
 @media only screen and (max-width: 324px) {
-  .container {
-    padding-left: 5px;
-    padding-right: 5px;
+  .post {
+    flex-basis: 100%;
+  }
+  .likePostContainer {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .likePostContainer > :first-child {
+    margin-right: 0px;
+    margin-bottom: 5px;
+  }
+
+  .likePostContainer > :last-child {
+    margin-left: 0px;
   }
 }

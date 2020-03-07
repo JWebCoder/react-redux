@@ -8,14 +8,21 @@ import { FeedsPage } from "./containers";
 import { pt, en } from "./shared";
 import * as serviceWorker from "./serviceWorker";
 import { context as TranslationsContext } from "./containers/useTranslations";
+import { context as ModalContext } from "./containers/useModal";
 
 ReactDOM.render(
   <Provider store={store}>
-    <TranslationsContext.Provider
-      value={{ lang: "pt", strings: { pt, en }, subscribers: [] }}
+    <ModalContext.Provider
+      value={{
+        subscribers: {}
+      }}
     >
-      <FeedsPage />
-    </TranslationsContext.Provider>
+      <TranslationsContext.Provider
+        value={{ lang: "pt", strings: { pt, en }, subscribers: [] }}
+      >
+        <FeedsPage />
+      </TranslationsContext.Provider>
+    </ModalContext.Provider>
   </Provider>,
   document.getElementById("root")
 );

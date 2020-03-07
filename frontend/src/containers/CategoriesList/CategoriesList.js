@@ -22,7 +22,7 @@ const CategoriesList = ({ onNewPost }) => {
   const categories = useSelector(state => state.apiReducer.categories);
 
   return (
-    <div className={styles.verticalList}>
+    <React.Fragment>
       <Button
         floating
         cssPosition={styles.addButtonPosition}
@@ -41,7 +41,7 @@ const CategoriesList = ({ onNewPost }) => {
           }}
         />
       ))}
-    </div>
+    </React.Fragment>
   );
 };
 

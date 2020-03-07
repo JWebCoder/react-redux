@@ -10,12 +10,20 @@ const defaultData = {
       path: "reactdddddddddddddddddddddddddd"
     },
     {
+      name: "react",
+      path: "react"
+    },
+    {
       name: "redux",
       path: "redux"
     },
     {
       name: "udacity",
       path: "udacity"
+    },
+    {
+      name: "udacityyyyyy",
+      path: "udacityyyyyy"
     }
   ]
 };
