@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useMemo } from "react";
 import { context } from "./context";
 
 /**
@@ -13,7 +13,13 @@ const asField = WrappedField => props => {
     contextValue.updateFieldValue(props.fieldName, value);
   };
 
-  return <WrappedField {...props} onChange={updateFieldValue} />;
+  return (
+    <WrappedField
+      onChange={updateFieldValue}
+      value={contextValue.values[props.fieldName]}
+      {...props}
+    />
+  );
 };
 
 export default asField;

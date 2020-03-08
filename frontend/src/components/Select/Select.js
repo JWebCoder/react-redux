@@ -56,7 +56,7 @@ Select.propTypes = {
 };
 
 Select.defaultProps = {
-  selected: null,
+  selected: "",
   requiredMessage: null
 };
 

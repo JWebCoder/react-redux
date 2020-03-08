@@ -24,7 +24,8 @@ const Form = ({ children, onSubmit }) => {
     <form onSubmit={handleOnSubmit} className={styles.form}>
       <Provider
         value={{
-          updateFieldValue
+          updateFieldValue,
+          values: formValues
         }}
       >
         {children}
@@ -44,4 +45,4 @@ Form.propTypes = {
   onSubmit: Proptypes.func.isRequired
 };
 
-export default Form;
+export default React.memo(Form);

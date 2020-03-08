@@ -33,11 +33,15 @@ Modal.propTypes = {
   /**
    * Callback to be called when the close button is clicked
    */
-  onCloseClick: PropTypes.func.isRequired,
+  onCloseClick: PropTypes.func,
   /**
    * Indicates if the user is allowed to close the modal
    */
   allowClose: PropTypes.bool
+};
+
+Modal.defaultProps = {
+  onCloseClick: () => {}
 };
 
 export default Modal;

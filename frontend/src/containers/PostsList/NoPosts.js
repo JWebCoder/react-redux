@@ -12,7 +12,7 @@ const NoPosts = () => {
   return (
     <React.Fragment>
       <h1 className={styles.noPosts}>{translations.nodata_title}</h1>
-      <h4 className={styles.noPosts}>{translations.nodata_hint}</h4>
+      <h3 className={styles.noPosts}>{translations.nodata_hint}</h3>
     </React.Fragment>
   );
 };

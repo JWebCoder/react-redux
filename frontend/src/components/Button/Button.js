@@ -36,7 +36,7 @@ Button.propTypes = {
   /**
    * Callback to be called on button click
    */
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   /**
    * Allow to append one custom lass to the button
    */
@@ -53,6 +53,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
+  onClick: () => {},
   className: "",
   floating: false,
   fullWidth: false

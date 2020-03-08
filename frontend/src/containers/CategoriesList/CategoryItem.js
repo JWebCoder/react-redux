@@ -38,7 +38,7 @@ CategoryItem.propTypes = {
   /**
    * Category item
    */
-  item: PropTypes.objectOf([PropTypes.string.isRequired]).isRequired
+  item: PropTypes.object.isRequired
 };
 
 export default CategoryItem;

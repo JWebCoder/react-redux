@@ -39,7 +39,7 @@ function useTranslations(component) {
   return [
     {
       __lang: contextObj.lang,
-      ...strings[langVal][component]
+      ...strings[contextObj.lang][component]
     },
     updateLanguageAndNotify
   ];

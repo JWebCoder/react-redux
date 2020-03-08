@@ -101,8 +101,9 @@
 }
 
 .noPosts {
+  margin-top: 25vh;
   text-align: center;
-  height: 50vh;
+  color: var(--primary-color-light);
 }
 
 @media only screen and (max-width: 1024px) {

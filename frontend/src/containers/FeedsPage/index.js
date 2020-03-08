@@ -55,7 +55,7 @@ const FeedsPage = () => {
         className={styles.addButtonPosition}
         onClick={() => setPostsModal(true)}
       >
-        <i className="fa fa-plus my-float"></i>
+        <i className="fa fa-plus"></i>
       </Button>
       <AuthorModal onAuthor={onAuthor} />
       <NewPostModal onPost={onPost} />

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 import { useSelector } from "react-redux";
+
 import { useTranslations } from "../useTranslations";
 import { useModal } from "../useModal";
 import { Button, Modal } from "../../components";
@@ -36,7 +36,7 @@ const NewPostModal = ({ onPost }) => {
   }
   return (
     <Modal allowClose={true} onCloseClick={() => setPostsModal(false)}>
-      <Form id="post" onSubmit={onFormSubmit}>
+      <Form onSubmit={onFormSubmit}>
         <FormFields.TextInput
           placeholder={translations.title_placeholder}
           requiredMessage={translations.title_validation}

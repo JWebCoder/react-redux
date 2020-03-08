@@ -36,13 +36,13 @@ TextInput.propTypes = {
    */
   onChange: PropTypes.func.isRequired,
   /**
-   * The input value
-   */
-  value: PropTypes.string.isRequired,
-  /**
    * The fieldname uses to identify the field
    */
   fieldName: PropTypes.string.isRequired,
+  /**
+   * The input value
+   */
+  value: PropTypes.string,
   /**
    *  Callback to be called on each key up
    */
@@ -59,6 +59,7 @@ TextInput.propTypes = {
 
 TextInput.defaultProps = {
   onKeyUp: () => {},
+  value: "",
   placeholder: null,
   requiredMessage: null
 };

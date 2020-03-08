@@ -27,7 +27,7 @@ const AuthorModal = ({ onAuthor }) => {
   if (!authorModal) {
     return null;
   }
-
+  console.log(translations);
   return (
     <Modal allowClose={false}>
       <Form onSubmit={handleSubmit}>
@@ -36,7 +36,6 @@ const AuthorModal = ({ onAuthor }) => {
           placeholder={translations.author_placeholder}
           requiredMessage={translations.author_validation}
           fieldName="name"
-          þ
         />
         <Button>{translations.submit}</Button>
       </Form>
