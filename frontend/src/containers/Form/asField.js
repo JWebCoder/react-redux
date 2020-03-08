@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { context } from "./context";
 
 /**
@@ -13,12 +13,27 @@ const asField = WrappedField => props => {
     contextValue.updateFieldValue(props.fieldName, value);
   };
 
+  // Initialize the field on the context so that we can have default values
+  // passed via props
+  useEffect(() => {
+    let value = "";
+    // Used for the select box
+    if (props.selected) {
+      value = props.selected;
+    }
+
+    if (props.value) {
+      value = props.value;
+    }
+
+    updateFieldValue(value);
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <WrappedField
       {...props}
-      selected={
-        !!props.selected ? props.selected : contextValue.values[props.fieldName]
-      }
+      selected={contextValue.values[props.fieldName]}
       onChange={updateFieldValue}
       value={contextValue.values[props.fieldName]}
     />

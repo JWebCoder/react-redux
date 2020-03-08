@@ -23,11 +23,12 @@ const NewPostModal = ({ onPost }) => {
 
   const onFormSubmit = values => {
     setPostsModal(false);
+
     onPost({
       title: values.title,
       body: values.body,
       author: sessionStorage.getItem("author"),
-      category: values.category || currentCategory
+      category: values.category
     });
   };
 
