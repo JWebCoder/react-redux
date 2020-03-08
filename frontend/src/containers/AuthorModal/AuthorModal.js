@@ -27,7 +27,7 @@ const AuthorModal = ({ onAuthor }) => {
   if (!authorModal) {
     return null;
   }
-  console.log(translations);
+
   return (
     <Modal allowClose={false}>
       <Form onSubmit={handleSubmit}>
