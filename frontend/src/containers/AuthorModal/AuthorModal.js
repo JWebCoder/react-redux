@@ -30,7 +30,7 @@ const AuthorModal = ({ onAuthor }) => {
 
   return (
     <Modal allowClose={false}>
-      <Form id="author" onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <h3>{translations.title}</h3>
         <FormFields.TextInput
           placeholder={translations.author_placeholder}

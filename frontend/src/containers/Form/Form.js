@@ -1,9 +1,14 @@
 import React, { useState } from "react";
+import Proptypes from "prop-types";
+
 import { Provider } from "./context";
 
 import styles from "./styles.module.css";
 
-const Form = ({ children, id, onSubmit }) => {
+/**
+ * Form component to encapsulate some basic form funcionalities
+ */
+const Form = ({ children, onSubmit }) => {
   const [formValues, setFormValues] = useState({});
 
   const updateFieldValue = (fieldName, value) => {
@@ -26,6 +31,17 @@ const Form = ({ children, id, onSubmit }) => {
       </Provider>
     </form>
   );
+};
+
+Form.propTypes = {
+  /**
+   * The form contet. Will has the form context
+   */
+  children: Proptypes.any.isRequired,
+  /**
+   * Callback to be called when the submit event was called under the form
+   */
+  onSubmit: Proptypes.func.isRequired
 };
 
 export default Form;

@@ -8,6 +8,10 @@ import { Button } from "../../components";
 
 import styles from "./styles.module.css";
 
+/**
+ * Component that given on postId and its likes number, builds
+ * the likes funcionality
+ */
 const LikePost = ({ postId, likes }) => {
   const dispatch = useDispatch();
 

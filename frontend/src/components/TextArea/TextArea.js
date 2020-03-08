@@ -1,29 +1,26 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import styles from "./styles.module.css";
 
 /**
- * Method responsible for the render of the TextInput component.
+ * Method responsible for the render of the TextArea component.
  */
-const TextInput = ({
+const TextArea = ({
   fieldName,
   placeholder,
   onChange,
   value,
-  invisible,
-  disabled,
   requiredMessage,
   onKeyUp
 }) => {
   return (
     <textarea
       className={styles.textArea}
-      disabled={disabled}
       name={fieldName}
       onChange={e => onChange(e.target.value)}
       value={value}
       placeholder={placeholder}
-      hidden={invisible}
       required={!!requiredMessage}
       onInvalid={e => e.target.setCustomValidity(requiredMessage)}
       onInput={e => e.target.setCustomValidity("")}
@@ -32,4 +29,37 @@ const TextInput = ({
   );
 };
 
-export default TextInput;
+TextArea.propTypes = {
+  /**
+   * Callback to be called when the input changes
+   */
+  onChange: PropTypes.func.isRequired,
+  /**
+   * The input value
+   */
+  value: PropTypes.string.isRequired,
+  /**
+   * The fieldname uses to identify the field
+   */
+  fieldName: PropTypes.string.isRequired,
+  /**
+   *  Callback to be called on each key up
+   */
+  onKeyUp: PropTypes.func,
+  /**
+   * THe input placeholder
+   */
+  placeholder: PropTypes.string,
+  /**
+   * Sets the required field on the input and indicates the error message
+   */
+  requiredMessage: PropTypes.string
+};
+
+TextArea.defaultProps = {
+  onKeyUp: () => {},
+  placeholder: null,
+  requiredMessage: null
+};
+
+export default TextArea;

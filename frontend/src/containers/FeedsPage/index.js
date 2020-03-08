@@ -7,6 +7,7 @@ import AuthorModal from "../AuthorModal";
 import NewPostModal from "../NewPostModal";
 import styles from "./styles.module.css";
 
+import { Button } from "../../components";
 import { useTranslations } from "../useTranslations";
 import { useModal } from "../useModal";
 import { api } from "../../shared";
@@ -29,7 +30,7 @@ const FeedsPage = () => {
     return () => {
       window.removeEventListener("storage", handler);
     };
-  }, []);
+  }, [setLanguage]);
 
   const onAuthor = () => dispatch(api.actionCreators.getPosts());
 
@@ -49,11 +50,18 @@ const FeedsPage = () => {
 
   return (
     <React.Fragment>
+      <Button
+        floating
+        className={styles.addButtonPosition}
+        onClick={() => setPostsModal(true)}
+      >
+        <i className="fa fa-plus my-float"></i>
+      </Button>
       <AuthorModal onAuthor={onAuthor} />
       <NewPostModal onPost={onPost} />
       <div className={styles.container}>
         <div className={styles.categoriesContainer}>
-          <CategoriesList onNewPost={() => setPostsModal(true)} />
+          <CategoriesList />
         </div>
         <div className={styles.postsContainer}>
           <PostsList />

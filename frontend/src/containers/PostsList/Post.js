@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 import { useDispatch } from "react-redux";
 
 import LikePost from "./LikePost";
@@ -7,34 +9,37 @@ import styles from "./styles.module.css";
 import { Editable } from "../../components";
 import { api } from "../../shared";
 
-const Post = ({ feed }) => {
+/**
+ * Component to build a given token
+ */
+const Post = ({ post }) => {
   const dispatch = useDispatch();
 
   return (
     <div className={styles.post}>
       <div className={styles.titleContainer}>
         <span className={styles.author + " " + styles.trimText}>
-          {feed.author}
+          {post.author}
         </span>
         &nbsp;
         <span className={styles.category + " " + styles.trimText}>
-          {" " + feed.category}
+          {" " + post.category}
         </span>
         <Editable.EditableSpan
-          allowEdit={feed.author === sessionStorage.getItem("author")}
-          value={feed.title}
+          allowEdit={post.author === sessionStorage.getItem("author")}
+          value={post.title}
           wrappingClass={styles.title + " " + styles.trimText}
           onNewValue={value => {
             dispatch(
-              api.actionCreators.putPostDetails(feed.id, value, feed.body)
+              api.actionCreators.putPostDetails(post.id, value, post.body)
             );
           }}
         />
-        {feed.author === sessionStorage.getItem("author") && (
+        {post.author === sessionStorage.getItem("author") && (
           <span
             className={styles.delete}
             onClick={() => {
-              dispatch(api.actionCreators.deletePost(feed.id));
+              dispatch(api.actionCreators.deletePost(post.id));
             }}
           >
             &times;
@@ -42,20 +47,25 @@ const Post = ({ feed }) => {
         )}
       </div>
       <Editable.EditableP
-        allowEdit={feed.author === sessionStorage.getItem("author")}
-        value={feed.body}
+        allowEdit={post.author === sessionStorage.getItem("author")}
+        value={post.body}
         wrappingClass={styles.body}
         onNewValue={value => {
           dispatch(
-            api.actionCreators.putPostDetails(feed.id, feed.title, value)
+            api.actionCreators.putPostDetails(post.id, post.title, value)
           );
         }}
       />
-      <LikePost likes={feed.voteScore} postId={feed.id} />
+      <LikePost likes={post.voteScore} postId={post.id} />
     </div>
   );
 };
 
-export default React.memo(Post, () => {
-  return false;
-});
+Post.propTypes = {
+  /**
+   * The post to be used to build one psot card
+   */
+  post: PropTypes.object.isRequired
+};
+
+export default Post;
