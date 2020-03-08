@@ -10,7 +10,7 @@ import * as context from "./context";
 function useTranslations(component) {
   const contextObj = useContext(context.context);
   const strings = contextObj.strings;
-  const [langVal, setLang] = useState(contextObj.lang);
+  const [, setLang] = useState(contextObj.lang);
 
   // Subscribe for context changes
   useEffect(() => {
