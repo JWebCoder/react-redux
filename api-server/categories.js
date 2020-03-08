@@ -6,10 +6,6 @@ let db = {};
 const defaultData = {
   categories: [
     {
-      name: "reactdddddddddddddddddddddddddd",
-      path: "reactdddddddddddddddddddddddddd"
-    },
-    {
       name: "react",
       path: "react"
     },
@@ -20,10 +16,6 @@ const defaultData = {
     {
       name: "udacity",
       path: "udacity"
-    },
-    {
-      name: "udacityyyyyy",
-      path: "udacityyyyyy"
     }
   ]
 };

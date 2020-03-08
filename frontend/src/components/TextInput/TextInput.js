@@ -38,7 +38,7 @@ TextInput.propTypes = {
   /**
    * The fieldname uses to identify the field
    */
-  fieldName: PropTypes.string.isRequired,
+  fieldName: PropTypes.string,
   /**
    * The input value
    */
@@ -59,6 +59,7 @@ TextInput.propTypes = {
 
 TextInput.defaultProps = {
   onKeyUp: () => {},
+  fieldName: "",
   value: "",
   placeholder: null,
   requiredMessage: null

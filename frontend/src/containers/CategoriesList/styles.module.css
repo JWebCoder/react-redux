@@ -41,6 +41,9 @@
     opacity: 0.6;
     border-bottom: none;
   }
+  .item:hover {
+    transform: scale(1.1, 1.1);
+  }
 
   .title {
     font-size: medium;
@@ -48,7 +51,7 @@
 
   .selected {
     opacity: 0.8;
-    border-bottom: 5px solid var(--primary-color);
+    transform: scale(1.1, 1.1);
   }
 }
 

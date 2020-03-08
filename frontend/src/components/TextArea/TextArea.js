@@ -37,7 +37,7 @@ TextArea.propTypes = {
   /**
    * The fieldname uses to identify the field
    */
-  fieldName: PropTypes.string.isRequired,
+  fieldName: PropTypes.string,
   /**
    *  Callback to be called on each key up
    */
@@ -58,6 +58,7 @@ TextArea.propTypes = {
 
 TextArea.defaultProps = {
   onKeyUp: () => {},
+  fieldName: "",
   value: "",
   placeholder: null,
   requiredMessage: null

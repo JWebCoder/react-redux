@@ -15,9 +15,10 @@ const asField = WrappedField => props => {
 
   return (
     <WrappedField
+      {...props}
+      selected={!!props.selected || contextValue.values[props.fieldName]}
       onChange={updateFieldValue}
       value={contextValue.values[props.fieldName]}
-      {...props}
     />
   );
 };
