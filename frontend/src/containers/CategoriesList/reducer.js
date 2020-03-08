@@ -6,7 +6,7 @@ const chooseCategory = (state, action) => ({
 });
 
 const initialState = {
-  currentCategory: null
+  currentCategory: ""
 };
 
 /**
