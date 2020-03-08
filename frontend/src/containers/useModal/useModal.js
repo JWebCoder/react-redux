@@ -17,7 +17,7 @@ function useModal(name) {
 
   // Effect to subscribe to context so that we receive the modal updates
   useEffect(() => {
-    const subscriptionId = contextObj.subscribers[name].length;
+    const subscriptionId = contextObj.subscribers[name].length - 1;
     contextObj.subscribers[name] = [
       ...contextObj.subscribers[name],
       setInputAuthorVal

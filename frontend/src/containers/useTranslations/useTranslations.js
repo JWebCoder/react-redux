@@ -14,7 +14,7 @@ function useTranslations(component) {
 
   // Subscribe for context changes
   useEffect(() => {
-    const subscriptionId = contextObj.subscribers.length;
+    const subscriptionId = contextObj.subscribers.length - 1;
     contextObj.subscribers = [...contextObj.subscribers, setLang];
 
     return () => {
