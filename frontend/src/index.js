@@ -19,7 +19,7 @@ ReactDOM.render(
     >
       <TranslationsContext.Provider
         value={{
-          lang: localStorage.getItem("lang"),
+          lang: localStorage.getItem("lang") || 'pt',
           strings: { pt, en },
           subscribers: []
         }}
