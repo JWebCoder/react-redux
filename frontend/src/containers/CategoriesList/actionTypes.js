@@ -1,0 +1,3 @@
+const CHOOSE_CATEGORY = "feedsPage/CHOOSE_CATEGORY";
+
+export { CHOOSE_CATEGORY };

@@ -1,0 +1,133 @@
+.post {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--primary-color-lighter);
+  border-radius: 10px;
+
+  padding: 5px 5px 5px 5px;
+
+  margin-top: 15px;
+  margin-bottom: 40px;
+  margin-right: 100px;
+  margin-left: 100px;
+}
+
+.trimText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+
+.title {
+  background-color: var(--primary-color-light);
+
+  padding: 5px 5px 5px 5px;
+
+  font-weight: bold;
+  line-height: 20px;
+
+  border-radius: 5px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  flex-grow: 3;
+}
+
+.category {
+  background-color: white;
+
+  padding: 5px 5px 5px 5px;
+
+  border-radius: 5px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+
+  font-weight: bold;
+  line-height: 20px;
+
+  flex-grow: 0;
+}
+
+.author {
+  font-weight: bold;
+  flex-grow: 0;
+}
+
+.body {
+  background-color: white;
+  min-height: 50px;
+
+  padding: 5px 5px 5px 5px;
+
+  word-break: break-all;
+}
+
+.delete {
+  color: #aaaaaa;
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.delete:hover,
+.delete:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.likePostContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.likePostContainer > :first-child {
+  margin-right: 10px;
+}
+
+.likePostContainer > :last-child {
+  margin-left: 10px;
+}
+
+.noPosts {
+  margin-top: 25vh;
+  text-align: center;
+  color: var(--primary-color-light);
+}
+
+@media only screen and (max-width: 1024px) {
+  .post {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+@media only screen and (max-width: 324px) {
+  .post {
+    flex-basis: 100%;
+  }
+  .likePostContainer {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .likePostContainer > :first-child {
+    margin-right: 0px;
+    margin-bottom: 5px;
+  }
+
+  .likePostContainer > :last-child {
+    margin-left: 0px;
+  }
+}

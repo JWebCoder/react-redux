@@ -1,0 +1,21 @@
+{
+  "author_modal": {
+    "title": "Autor",
+    "author_placeholder": "Autor",
+    "author_validation": "O autor é obrigatório",
+    "submit": "Aceitar"
+  },
+  "new_post_modal": {
+    "title_placeholder": "Titúlo",
+    "body_placeholder": "Corpo",
+    "category_title": "Escolha uma categoria",
+    "submit": "Novo post",
+    "title_validation": "O novo post precisa de um titúlo",
+    "body_validation": "O novo post precisa de um corpo",
+    "category_validation": "O novo post precisa de uma categoria"
+  },
+  "posts_list": {
+    "nodata_title": "Sem Posts",
+    "nodata_hint": "Carregue no botão '+' para adionar posts"
+  }
+}

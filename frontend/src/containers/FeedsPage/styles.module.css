@@ -1,0 +1,76 @@
+.container {
+  display: flex;
+}
+
+.categoriesContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 300px;
+
+  border-right: 2px double var(--primary-color);
+  height: 100vh;
+  transition: 0.5s;
+
+  padding-left: 50px;
+  padding-right: 50px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.postsContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+
+  height: 100vh;
+  overflow-y: auto;
+  margin-top: 30px;
+}
+
+.addButtonPosition {
+  top: 60px;
+  left: 365px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .addButtonPosition {
+    box-shadow: none;
+  }
+}
+
+@media only screen and (max-width: 724px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .addButtonPosition {
+    left: 10px;
+    transform: scale(0.9, 0.9);
+    z-index: 2;
+  }
+
+  .categoriesContainer {
+    display: flex;
+    flex-direction: row;
+    flex: 0 0 10vh;
+
+    border-bottom: 2px solid var(--primary-color);
+    border-right: none;
+
+    padding-left: 5px;
+    padding-right: 5px;
+    overflow-y: hidden;
+  }
+
+  .categoriesContainer:hover {
+    overflow-x: auto;
+  }
+
+  .postsContainer {
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 90vh;
+  }
+}
